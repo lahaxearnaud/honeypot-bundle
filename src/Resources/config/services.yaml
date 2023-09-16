@@ -1,0 +1,30 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+
+    _instanceof:
+        Alahaxe\HoneypotBundle\Services\CounterMeasureInterface:
+            tags: ['alahaxe.honeypot.countermeasure']
+
+    Alahaxe\HoneypotBundle\Services\:
+        resource: '../../Services'
+
+    Alahaxe\HoneypotBundle\Subscribers\:
+        resource: '../../Subscribers'
+        tags: ['kernel.event_subscriber']
+
+    Alahaxe\HoneypotBundle\Services\CounterMeasureManager:
+        bind:
+            $counterMeasures: !tagged_iterator { tag: 'alahaxe.honeypot.countermeasure'}
+
+    Alahaxe\HoneypotBundle\Services\CounterMeasures\LocalLockCounterMeasure:
+        bind:
+            $honeypotCache: '@alahaxe_honeypot.local_lock_cache_adapter'
+
+    alahaxe_honeypot.local_lock_cache_adapter:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        bind:
+            $namespace: "alahaxe_honeypot"

@@ -1,0 +1,22 @@
+framework:
+    secret: secret
+    test: true
+
+honeypot:
+    policies:
+        - 'debug'
+        - 'log'
+        - 'local_lock'
+
+    lockTtl: 5
+
+monolog:
+    handlers:
+        main:
+            type: fingers_crossed
+            excluded_http_codes: [404]
+            level: debug
+            handler: test_handler
+
+        test_handler:
+            type: test

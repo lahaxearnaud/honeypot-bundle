@@ -1,0 +1,415 @@
+#################
+# Commons
+#################
+
+/*yarn.lock*
+/*.github/*
+/*.vs-code*
+/*package.json*
+/cgi-bin*
+/cgi-sys*
+/cfappman*
+/cfdocs*
+/splashAdmin*
+/vgn*
+/WEB-INF*
+/*.dll
+/*.exe
+/*.cmd
+/*.bat
+/*.sh
+/*.log
+/*..*
+/.git*
+/.env*
+/*.gitignore
+/*README
+/*CHANGELOG
+/*LICENCE
+/*.htaccess*
+/*.htpasswd*
+/.meta*
+/.web*
+/*nginx.conf*
+/*contrib/unicode2nginx*
+/*conf/fastcgi_params
+/*conf/fastcgi.conf
+/*conf/koi-utf
+/*conf/koi-win
+/*conf/mime.types
+/*conf/nginx.conf
+/*conf/scgi_params
+/*conf/uwsgi_params
+/*conf/win-utf
+/cpanel*
+/*Dockerfile
+/*docker-compose*.yaml
+/*docker-compose*.yml
+/jenkins*
+/_ignition*
+/secure*
+
+#################
+# php
+#################
+
+/*install.php
+/*typo3/*
+/*cron.php*
+/extensions/debug*
+/vendor/*
+/composer.json
+/composer.lock
+/phpinfo.php
+/index.php~
+/*.bak
+/info.php*
+/phpsecinfo*
+/*.ini~
+/phpinfo*
+/*phpmyadmin*
+/PMA*
+/admin*
+/dbadmin*
+/mysql*
+/myadmin*
+/phpmyadmin2*
+/phpMyAdmin2*
+/phpMyAdmin-2*
+/php-my-admin*
+/phpMyAdmin*
+/sqlitemanager*
+/sqlmanager*
+/mysqlmanager*
+/webadmin*
+/sqlweb*
+/websql*
+/webdb*
+/mysqladmin*
+/mysql-admin*
+/MySQLadmin*
+/MySQLAdmin*
+/login.php
+/logon.php
+/forumdisplay.php*
+
+#################
+# Common PHP backdoors
+#################
+
+/0byt3m1n1.php
+/150.php
+/1.php
+/2008.php
+/529.php
+/accept_language.php
+/acid.php
+/a_gedit.php
+/ajax_php command shell.php
+/ajax_php_command_shell.php
+/ak47shell.php
+/ak-74.php
+/ak-74 security team web shell beta version.php
+/ak74shell.php
+/alfa3.php
+/alfa.php
+/andela 1c3 v3 (private release 2017).php
+/andela.php
+/angel.php
+/ani-shell.php
+/anonexploitershell.php
+/antichat.php
+/antichat shell*.php
+/antichat_shell.*.php
+/aspydrv.php
+/autoroot.php
+/ayyildiz_tim.php
+/b374k-mini-shell-php.php
+/b374k.php
+/b374kv2.1.php
+/b374v2.8-b374k.php
+/b37.php
+/backdoor1.php
+/backdoorfr.php
+/backup.php
+/backupsql.php
+/bayz21-priv-shell-v*.php
+/bdotw44shell.php
+/berandal-owlsquad.php
+/bloodsecv4.php
+/bug.php
+/bypass403.php
+/bypass529.php
+/bypass-login.php
+/c0derz shell [csh] v. 0.1.1 release.php
+/c100.php
+/c2007.php
+/c37.php
+/c66.php
+/c99*.php
+/casus*.php
+/cbfphpsh.php
+/cgitelnet.php
+/cihshell_fix.php
+/cmd.php
+/cmd-simple.php
+/con7ext-shell-v.2-l o l.php
+/configkillerionkros.php
+/connect-back.php
+/co.php
+/cpanel.php
+/cpg_143_incl_xpl.php
+/crystal*.php
+/csh.php
+/ctt_sh.php
+/cw.php
+/cwshelldumper.php
+/cyberlords_sql.php
+/cybershell.php
+/cyber shell (v 1.0).php
+/dc3 security crew shell priv.php
+/dc3_security.php
+/ddos.php
+/dive shell 1.0 - emperor hacking team.php
+/dive_shell.php
+/dns.php
+/dq.php
+/dra.php
+/dtool pro.php
+/dtool_pro.php
+/dx.php
+/dxshell.php
+/egy.php
+/ekin0x.php
+/engineers security (private php shell 2017).php
+/erne.php
+/ex0shell.php
+/fatalisticz_fx.php
+/fatal.php
+/fatalshell.php
+/file.php
+/filesman.php
+/framer.php
+/ftpsearch.php
+/fuckphpshell.php
+/g00nshell-v1.3.php
+/g00nv13.php
+/g5.php
+/gamma web shell.php
+/gamma_web_shell.php
+/gfs*.php
+/grp webshell 2.0 release build 2018 (c)2006,great.php
+/grp_webshell.php
+/g-security-webshell.php
+/h4ntu shell.php
+/h4ntu shell [powered by tsoi].php
+/hacker.php
+/hector-uploader.php
+/hiddens shell v1.php
+/hidshell.php
+/hkrkoz.php
+/img.php
+/imhapftp.php
+/indoxploit-mass-defacer.php
+/indoxploit.php
+/ironshell.php
+/isko.php
+/iskorpitx.php
+/itsecteam_shell.php
+/jav-shellv1.1-maqlo.php
+/jca.php
+/jspwebshell_1.2.php
+/k2ll33d.php
+/kadot universal shell v0.1.6.php
+/ka_ushell_0.1.6.php
+/ka_ushell.php
+/kral.php
+/kuda.php
+/lamashell.php
+/lifkas.php
+/list.php
+/liz0zim.php
+/liz0zim*.php
+/loaderz web shell.php
+/loaderz_web_shell.php
+/load_shell.php
+/locus7s.php
+/locus.php
+/log.php
+/lolipop.php
+/lostdc.php
+/lotfree.php
+/macker's private phpshell.php
+/mackers_private_shell.php
+/mailer3.php
+/marion001.php
+/matamu.php
+/megabor.php
+/mini.php
+/mma.php
+/moroccan spamers ma-edition by ghost.php
+/moroccan_spamers.php
+/myshell.php
+/mysql interface v1.0.php
+/mysql.php
+/mysql_shell.php
+/mysql_tool.php
+/mysql web interface version 0.8.php
+/ncc-shell.php
+/networkfilemanagerphp.php
+/network.php
+/nfm.php
+/ngh.php
+/nixrem.php
+/nobody-uploader.php
+/non-alphanumeric.php
+/nshell (1).php
+/nshell.php
+/nst.php
+/nstview.php
+/ntdaddy v*.php
+/ntdaddy_v*.php
+/obfuscated-*.php
+/p0wny-shell.php
+/phantasma.php
+/phpbackdoor15.php
+/php backdoor connect.pl.php
+/php_backdoor*.php
+/php-include-w-shell.php
+/phpinj.php
+/phpjackal.php
+/phpremoteview.php
+/php-reverse-shell.php
+/phpshell17.php
+/php shell.php
+/php_shell.php
+/phpspy.php
+/phpspy ver 2006.php
+/ph vayv.php
+/phvayv.php
+/phvayvv.php
+/plugin-shell.php
+/predator.php
+/priv8.php
+/private-i3lue.php
+/proxy.php
+/punkholic.php
+/punk-nopass.php
+/pws.php
+/qsd-backdoor.php
+/qsd-php-backdoor.php
+/r00t.php
+/r57*.php
+/r58.php
+/rem view.php
+/root.php
+/rootshell*.php
+/rst_sql.php
+/ru24_post_sh.php
+/russian.php
+/s72_shell.php
+/s72 shell v1.1 coding.php
+/sadrazam.php
+/safe0ver*.php
+/safe_mode*.php
+/securityghost-priv-zero5.php
+/shankar.php
+/shell.php
+/shor7cut shell (beta killer).php
+/sh.php
+/simattacker.php
+/simple-backdoor.php
+/simple_cmd.php
+/simple-php-backdoor.*php
+/simple_php_backdoor*.php
+/simple-shell.php
+/simple-upload*.php
+/simshell 1.0 - simorgh security mgz.php
+/simshell.php
+/sincap 1.0.php
+/sincap_1.0.php
+/sincap.php
+/small.php
+/small web shell by zaco.php
+/small_web_shell.php
+/smevk.php
+/sniper.php
+/sniper_sa*.php
+/soldierofallah.php
+/sosyete.php
+/specialshell_99.php
+/s.php
+/spygrup.php
+/spy.php
+/spyshell.php
+/sql.php
+/sses.php
+/stnc*.php
+/stres.php
+/stupidc0de shell (2017).php
+/sym.php
+/tryag.php
+/udp.php
+/upl0ader.php
+/uploader.php
+/up.php
+/w3d.php
+/w4k.php
+/wacking.php
+/webadmin.php
+/webshell.php
+/weevely.php
+/who am i - mzrp105 (private php shell).php
+/winx shell.php
+/winx_shell.php
+/wordpress.php
+/worse linux shell.php
+/worse_linux_shell.php
+/w.php
+/wso*.php
+/xinfo.php
+/zacosmall.php
+/zehir4.php
+/zyklonshell.php
+
+#################
+# wordpress
+#################
+
+/wp-content*
+/wp-admin*
+/wp-includes*
+/dup-installer-bootlog
+/index.php
+/installer-backup.php
+/installer.php
+/license.txt
+/readme.html
+/wordfence-waf.php
+/wp-activate.php
+/wp-*.php
+/xmlrpc.php
+
+#################
+# piwik
+#################
+
+/core/*
+/libs/*
+/plugins/*
+
+#################
+# drupal
+#################
+
+/*blueprints/drupal*
+/*composer/
+/*core/assets/vendor/*
+/*core/vendor/*
+
+#################
+# joomla
+#################
+/*administrator/*
+/*/joomla*
+
