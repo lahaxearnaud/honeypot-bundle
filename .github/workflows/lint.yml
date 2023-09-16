@@ -1,0 +1,20 @@
+name: Lint
+on: [ push ]
+jobs:
+    php-cs-fixer:
+        name: PHP-CS-Fixer
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v2
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.2'
+                    tools: php-cs-fixer
+            -   name: Run phpcbf
+                run: php-cs-fixer fix --rules=@PSR2 src
+            -   name: Run phpcbf cache file
+                run: rm .php-cs-fixer.cache
+            -   uses: stefanzweifel/git-auto-commit-action@v4
+                with:
+                    commit_message: Apply php-cs-fixer changes

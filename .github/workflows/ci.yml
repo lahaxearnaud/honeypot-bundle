@@ -1,0 +1,75 @@
+name: CI
+
+on: [ push ]
+
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+        env:
+            PHPSTAN_LEVEL: 9
+        strategy:
+            matrix:
+                php-version: [ "8.0", "8.1", "8.2" ]
+                composer-options: [ '--prefer-lowest', '']
+        steps:
+            # ###
+            # CLONE INSTALL PHP
+            # ###
+            -   uses: actions/checkout@v2
+            -   name: "Setup PHP"
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
+                    extensions: pcov phpstan
+                env:
+                    fail-fast: true
+            -   name: "Install php deps"
+                uses: php-actions/composer@v6
+                with:
+                    command: update
+                    php_version: ${{ matrix.php-version }}
+                    version: 2
+                    dev: yes
+                    args: --no-interaction --no-progress --prefer-dist --no-scripts ${{ matrix.composer-options }}
+            # ###
+            # SIMPLE LINT
+            # ###
+            -   name: "Lint all php files"
+                run: php vendor/bin/parallel-lint src --no-progress
+            # ###
+            # QA
+            # ###
+            -   name: "Run phpstan"
+                run: php vendor/bin/phpstan analyse --level=${{ env.PHPSTAN_LEVEL }} src --no-progress -n
+            # ###
+            # UNIT TESTS
+            # ###
+            -   name: "Run phpunit"
+                run: XDEBUG_MODE=coverage php vendor/bin/paratest -p2 --runner WrapperRunner --coverage-text --coverage-cobertura coverage.xml
+            # ###
+            # REPORTING
+            # ###
+            -   name: "Report test coverage to DeepSource"
+                uses: deepsourcelabs/test-coverage-action@master
+                with:
+                    key: php
+                    coverage-file: coverage.xml
+                    dsn: ${{ secrets.DEEPSOURCE_DSN }}
+            # ###
+            # RELEASE
+            # ###
+            -   name: Semantic Release
+                uses: cycjimmy/semantic-release-action@v2
+                with:
+                    extra_plugins: |
+                        @semantic-release/commit-analyzer
+                        @semantic-release/release-notes-generator
+                        @semantic-release/changelog
+                        @semantic-release/github
+                        @semantic-release/git
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            -   name: New release
+                if: steps.semantic.outputs.new_release_published == 'true'
+                run: |
+                    echo ${{ steps.semantic.outputs.new_release_version }}
