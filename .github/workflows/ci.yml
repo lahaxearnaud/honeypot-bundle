@@ -44,13 +44,5 @@ jobs:
             # ###
             -   name: "Run phpunit"
                 run: XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-text --coverage-cobertura coverage.xml
-            # ###
-            # REPORTING
-            # ###
-            -   name: "Report test coverage to DeepSource"
-                uses: deepsourcelabs/test-coverage-action@master
-                with:
-                    key: php
-                    coverage-file: coverage.xml
-                    dsn: ${{ secrets.DEEPSOURCE_DSN }}
+
 

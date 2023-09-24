@@ -1,0 +1,22 @@
+name: DeepSource
+on:
+    workflow_run:
+        workflows: ["CI"]
+        branches: [main]
+        types:
+            - completed
+jobs:
+    deep-source:
+        name: Deep source
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v2
+            # ###
+            # REPORTING
+            # ###
+            -   name: "Report test coverage to DeepSource"
+                uses: deepsourcelabs/test-coverage-action@master
+                with:
+                    key: php
+                    coverage-file: coverage.xml
+                    dsn: ${{ secrets.DEEPSOURCE_DSN }}
