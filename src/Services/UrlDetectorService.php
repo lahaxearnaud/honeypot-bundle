@@ -7,7 +7,8 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\HttpFoundation\Request;
 
-class UrlDetectorService implements LoggerAwareInterface {
+class UrlDetectorService implements LoggerAwareInterface
+{
 
     use LoggerAwareTrait;
 

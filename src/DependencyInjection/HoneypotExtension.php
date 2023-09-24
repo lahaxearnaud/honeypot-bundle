@@ -50,7 +50,7 @@ class HoneypotExtension extends Extension
             );
         }
 
-        $patterns = array_filter($patterns, fn($line) => !empty($line) && !str_starts_with($line, '#'));
+        $patterns = array_filter($patterns, fn ($line) => !empty($line) && !str_starts_with($line, '#'));
 
 
         $definition = $container->getDefinition(UrlDetectorService::class);

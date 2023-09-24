@@ -34,7 +34,7 @@ class Configuration implements ConfigurationInterface
 
                 ->arrayNode('policies')
                     ->enumPrototype()->values(
-                        array_map(fn(Policy $policy): string => $policy->value, Policy::cases())
+                        array_map(fn (Policy $policy): string => $policy->value, Policy::cases())
                     )->end()
                     ->beforeNormalization()->castToArray()->end()
                 ->end()
@@ -53,13 +53,13 @@ class Configuration implements ConfigurationInterface
                              ->end()
                              ->enumNode('mode')
                                 ->values(
-                                    array_map(fn(CloudflareBlockMode $policy): string => $policy->value, CloudflareBlockMode::cases())
+                                    array_map(fn (CloudflareBlockMode $policy): string => $policy->value, CloudflareBlockMode::cases())
                                 )
                              ->end()
                         ->end()
                     ->end()
                 ->end()
-            ;
+        ;
 
         return $treeBuilder;
     }

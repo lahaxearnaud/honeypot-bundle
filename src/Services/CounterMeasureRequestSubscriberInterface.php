@@ -10,4 +10,3 @@ interface CounterMeasureRequestSubscriberInterface extends CounterMeasureInterfa
 {
     public function onRequest(Request $request): ?Response;
 }
-
