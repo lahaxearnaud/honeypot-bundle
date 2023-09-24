@@ -53,21 +53,4 @@ jobs:
                     key: php
                     coverage-file: coverage.xml
                     dsn: ${{ secrets.DEEPSOURCE_DSN }}
-            # ###
-            # RELEASE
-            # ###
-            -   name: Semantic Release
-                uses: cycjimmy/semantic-release-action@v2
-                with:
-                    extra_plugins: |
-                        @semantic-release/commit-analyzer
-                        @semantic-release/release-notes-generator
-                        @semantic-release/changelog
-                        @semantic-release/github
-                        @semantic-release/git
-                env:
-                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            -   name: New release
-                if: steps.semantic.outputs.new_release_published == 'true'
-                run: |
-                    echo ${{ steps.semantic.outputs.new_release_version }}
+
