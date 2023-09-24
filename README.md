@@ -24,12 +24,14 @@ honeypot:
     # ------------------
     # | Required part
     # ------------------
-    policies:
+    policies: # values: debug, log, local_lock, cloudflare_lock
         - 'local_lock' # local lock, based on filesystem cache
         - 'cloudflare_lock' # lock on cloudflare
+        - 'debug' # only used in unit tests
+        - 'log' # enabled by default
 
     # ------------------
-    # | Optional part
+    # | Optional part, but you should add your IP here
     # ------------------
     ipWhitelist:
         - 127.0.0.1
