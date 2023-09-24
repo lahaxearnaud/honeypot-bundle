@@ -3,6 +3,7 @@
 namespace Alahaxe\HoneypotBundle\Tests\Services\CounterMeasures;
 
 use Alahaxe\HoneypotBundle\Services\CounterMeasures\LocalLockCounterMeasure;
+use Alahaxe\HoneypotBundle\Services\LockedResponseGenerator\SimpleResponseGenerator;
 use Alahaxe\HoneypotBundle\Services\VisitorFingerPrintService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
@@ -16,6 +17,7 @@ class LocalLockCounterMeasureTest extends KernelTestCase
         $counterMeasure = new LocalLockCounterMeasure(
             self::getContainer()->get(VisitorFingerPrintService::class),
             $cache,
+            new SimpleResponseGenerator(),
             60,
         );
 

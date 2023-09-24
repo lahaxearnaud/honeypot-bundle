@@ -2,13 +2,22 @@ framework:
     secret: secret
     test: true
 
+twig:
+    # ...
+    paths:
+        '%kernel.project_dir%/Resources/views': HoneypotBundle
+
 honeypot:
     policies:
-        - 'debug'
         - 'log'
         - 'local_lock'
 
-    lockTtl: 5
+    localLock:
+        lockTtl: 5
+        renderService: 'Alahaxe\HoneypotBundle\Services\LockedResponseGenerator\TwigResponseGenerator'
+
+    counterMeasures:
+        - Alahaxe\HoneypotBundle\Services\CounterMeasures\DebugCounterMeasure
 
 monolog:
     handlers:

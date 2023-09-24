@@ -4,17 +4,18 @@ declare(strict_types=1);
 namespace Alahaxe\HoneypotBundle\Services\CounterMeasures;
 
 use Alahaxe\HoneypotBundle\Services\CounterMeasureRequestSubscriberInterface;
+use Alahaxe\HoneypotBundle\Services\LockedResponseGeneratorInterface;
 use Alahaxe\HoneypotBundle\Services\VisitorFingerPrintService;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Contracts\Cache\ItemInterface;
 
 class LocalLockCounterMeasure implements CounterMeasureRequestSubscriberInterface
 {
     public function __construct(
         protected VisitorFingerPrintService $fingerPrintService,
         protected AdapterInterface $honeypotCache,
+        protected LockedResponseGeneratorInterface $lockedResponseGenerator,
         protected int $lockTtl = 60,
     ) {
     }
@@ -30,7 +31,7 @@ class LocalLockCounterMeasure implements CounterMeasureRequestSubscriberInterfac
     public function onRequest(Request $request): ?Response
     {
         if ($this->honeypotCache->hasItem($this->fingerPrintService->getFingerPrint($request))) {
-            return new Response('Locked', Response::HTTP_LOCKED);
+            return $this->lockedResponseGenerator->generateResponse();
         }
 
         return null;

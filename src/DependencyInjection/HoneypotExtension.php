@@ -9,6 +9,7 @@ use Alahaxe\HoneypotBundle\Services\CounterMeasures\CloudflareCounterMeasure;
 use Alahaxe\HoneypotBundle\Services\CounterMeasures\DebugCounterMeasure;
 use Alahaxe\HoneypotBundle\Services\CounterMeasures\LocalLockCounterMeasure;
 use Alahaxe\HoneypotBundle\Services\CounterMeasures\LoggerCounterMeasure;
+use Alahaxe\HoneypotBundle\Services\LockedResponseGenerator\TwigResponseGenerator;
 use Alahaxe\HoneypotBundle\Services\UrlDetectorService;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -22,7 +23,7 @@ class HoneypotExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container):void
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../Resources/config'));
         $loader->load('services.yaml');
 
         $configuration = new Configuration();
@@ -89,8 +90,11 @@ class HoneypotExtension extends Extension
         );
 
         $definition = $container->getDefinition(LocalLockCounterMeasure::class);
-        $definition->setArgument('$lockTtl', $config['lockTtl']);
-
+        $definition->setArgument('$lockTtl', $config['localLock']['lockTtl']);
+        $definition->setArgument(
+            '$lockedResponseGenerator',
+            $container->getDefinition($config['localLock']['renderService'])
+        );
         $counterMeasures[] = LoggerCounterMeasure::class;
 
         if (
@@ -112,5 +116,9 @@ class HoneypotExtension extends Extension
         $definition = $container->getDefinition(CounterMeasureManager::class);
         $definition->setArgument('$enabledCounterMeasures', $counterMeasures);
         $definition->setArgument('$ipWhitelist', $config['ipWhitelist'] ?? []);
+
+
+        $definition = $container->getDefinition(TwigResponseGenerator::class);
+        $definition->setArgument('$template', $config['localLock']['twigTemplate']);
     }
 }

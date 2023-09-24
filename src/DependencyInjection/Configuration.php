@@ -5,6 +5,7 @@ namespace Alahaxe\HoneypotBundle\DependencyInjection;
 use Alahaxe\HoneypotBundle\Enums\CloudflareBlockMode;
 use Alahaxe\HoneypotBundle\Enums\Policy;
 use Alahaxe\HoneypotBundle\Services\CounterMeasures\CloudflareCounterMeasure;
+use Alahaxe\HoneypotBundle\Services\LockedResponseGenerator\SimpleResponseGenerator;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -19,7 +20,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->getRootNode()
             ->children()
                 ->scalarNode('patternsFile')
-                    ->defaultValue(__DIR__.'/../Resources/patterns.txt')
+                    ->defaultValue(__DIR__ . '/../../Resources/patterns.txt')
                 ->end()
 
                 ->arrayNode('counterMeasures')
@@ -39,24 +40,32 @@ class Configuration implements ConfigurationInterface
                     ->beforeNormalization()->castToArray()->end()
                 ->end()
 
-                ->integerNode('lockTtl')
-                    ->defaultValue(60)
+                ->arrayNode('localLock')
+                     ->children()
+                        ->integerNode('lockTtl')
+                            ->defaultValue(60)
+                        ->end()
+                        ->scalarNode('renderService')
+                            ->defaultValue(SimpleResponseGenerator::class)
+                        ->end()
+                        ->scalarNode('twigTemplate')
+                            ->defaultValue('@HoneypotBundle/lock.html.twig')
+                        ->end()
+                    ->end()
                 ->end()
 
                 ->arrayNode('cloudflare')
-                    ->arrayPrototype()
-                        ->children()
-                             ->scalarNode('email')->end()
-                             ->scalarNode('token')->end()
-                             ->scalarNode('endpoint')
-                                ->defaultValue(CloudflareCounterMeasure::FIREWALL_API_ENDPOINT)
-                             ->end()
-                             ->enumNode('mode')
-                                ->values(
-                                    array_map(fn (CloudflareBlockMode $policy): string => $policy->value, CloudflareBlockMode::cases())
-                                )
-                             ->end()
-                        ->end()
+                    ->children()
+                         ->scalarNode('email')->end()
+                         ->scalarNode('token')->end()
+                         ->scalarNode('endpoint')
+                            ->defaultValue(CloudflareCounterMeasure::FIREWALL_API_ENDPOINT)
+                         ->end()
+                         ->enumNode('mode')
+                            ->values(
+                                array_map(fn (CloudflareBlockMode $policy): string => $policy->value, CloudflareBlockMode::cases())
+                            )
+                         ->end()
                     ->end()
                 ->end()
         ;

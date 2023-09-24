@@ -10,10 +10,10 @@ services:
             tags: ['alahaxe.honeypot.countermeasure']
 
     Alahaxe\HoneypotBundle\Services\:
-        resource: '../../Services'
+        resource: '../../src/Services'
 
     Alahaxe\HoneypotBundle\Subscribers\:
-        resource: '../../Subscribers'
+        resource: '../../src/Subscribers'
         tags: ['kernel.event_subscriber']
 
     Alahaxe\HoneypotBundle\Services\CounterMeasureManager:
@@ -28,3 +28,5 @@ services:
         class: Symfony\Component\Cache\Adapter\FilesystemAdapter
         bind:
             $namespace: "alahaxe_honeypot"
+
+    Alahaxe\HoneypotBundle\Services\LockedResponseGenerator\TwigResponseGenerator:

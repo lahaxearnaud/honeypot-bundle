@@ -22,13 +22,20 @@ composer require alahaxe/honeypot-bundle
 ```yaml
 honeypot:
     # ------------------
-    # | Required part
+    # | Required part, Policies are just some preset of counterMeasures
+    # | You can activate several policies
     # ------------------
     policies: # values: debug, log, local_lock, cloudflare_lock
         - 'local_lock' # local lock, based on filesystem cache
-        - 'cloudflare_lock' # lock on cloudflare
+        - 'cloudflare_lock' # lock on cloudflare's firewall using API
         - 'debug' # only used in unit tests
-        - 'log' # enabled by default
+        - 'log' # enabled by default, just add a log when an honeypot is called
+
+    # ------------------
+    # | Optional part, if you create you own counter measure
+    # ------------------
+    counterMeasures: # All class listed here must also be symfony service with tag: alahaxe.honeypot.countermeasure
+        - Alahaxe\HoneypotBundle\Services\CounterMeasures\DebugCounterMeasure
 
     # ------------------
     # | Optional part, but you should add your IP here
@@ -39,7 +46,8 @@ honeypot:
     # ------------------
     # | Optional part, used only for local lock
     # ------------------
-    lockTtl: 60 # (default: 60) duration in s of the local lock
+    localLock:
+        lockTtl: 60 # (default: 60) duration in s of the local lock, this config is not used for cloudflare lock
 
     # ------------------
     # | Optional part, used only if you enable cloudflare policy
@@ -53,6 +61,54 @@ honeypot:
     # | Optional part, default file contains commons scanned url
     # ------------------
     patternsFile: 'src/Resources/patterns.txt'
+```
+
+## Add you own counter measure
+
+### Implements your own service
+
+A counter measure is a simple symfony service that implements `Alahaxe\HoneypotBundle\Services\CounterMeasureInterface`.
+
+For example:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Alahaxe\HoneypotBundle\Services\CounterMeasures;
+
+use Alahaxe\HoneypotBundle\Services\CounterMeasureInterface;
+use Symfony\Component\HttpFoundation\Request;
+
+class LoggerCounterMeasure implements CounterMeasureInterface
+{
+    public function react(Request $request, string $honeypotPattern): void
+    {
+        // do something
+    }
+}
+
+```
+
+### Register you service
+
+All counter measure must have tag: `alahaxe.honeypot.countermeasure`
+
+In you `service.yaml`:
+
+```yaml
+services:
+    App\Services\Honeypot\CounterMeasures\DummyCounterMeasure:
+        # ... your service config
+        tags: ['alahaxe.honeypot.countermeasure']
+```
+
+Then you can activate your counter measure in the bundle configuration:
+
+```yaml
+honeypot:
+    counterMeasures:
+        - App\Services\Honeypo\CounterMeasures\DummyCounterMeasure
 ```
 
 ## License
