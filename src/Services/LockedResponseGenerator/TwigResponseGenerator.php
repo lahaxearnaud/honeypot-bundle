@@ -17,13 +17,14 @@ class TwigResponseGenerator implements LockedResponseGeneratorInterface
     }
     public function generateResponse(): Response
     {
-        try{
+        try {
             return new Response(
                 $this->twig->render($this->template),
                 $this->statusCode
             );
         } catch (\Throwable $e) {
-            dump($e);die;
+            dump($e);
+            die;
         }
 
     }
