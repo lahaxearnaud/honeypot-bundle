@@ -47,7 +47,14 @@ honeypot:
     # | Optional part, used only for local lock
     # ------------------
     localLock:
-        lockTtl: 60 # (default: 60) duration in s of the local lock, this config is not used for cloudflare lock
+        # (default: 60) duration in s of the local lock, this config is not used for cloudflare lock
+        lockTtl: 60
+        # Service that implements LockedResponseGeneratorInterface
+        # default is Alahaxe\HoneypotBundle\Services\LockedResponseGenerator\SimpleResponseGenerator
+        # but if you want a foncy page you can use TwigResponseGenerator
+        renderService: 'Alahaxe\HoneypotBundle\Services\LockedResponseGenerator\TwigResponseGenerator'
+        # If you use TwigResponseGenerator you may change the default template
+        twigTemplate: 'YouTwigTemplateFile.html.twig'
 
     # ------------------
     # | Optional part, used only if you enable cloudflare policy
