@@ -43,6 +43,6 @@ jobs:
             # UNIT TESTS
             # ###
             -   name: "Run phpunit"
-                run: XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-text --coverage-cobertura coverage.xml
+                run: XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-text
 
 
