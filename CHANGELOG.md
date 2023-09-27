@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/lahaxearnaud/honeypot-bundle/compare/v1.0.1...v1.0.2) (2023-09-27)
+
+
+### Bug Fixes
+
+* cloudflare config ([954903a](https://github.com/lahaxearnaud/honeypot-bundle/commit/954903a39d4fbe05e2b697620614f12152dc1b84))
+
 ## [1.0.1](https://github.com/lahaxearnaud/honeypot-bundle/compare/v1.0.0...v1.0.1) (2023-09-27)
 
 
