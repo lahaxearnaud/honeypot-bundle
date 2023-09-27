@@ -15,7 +15,6 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('honeypot');
 
-
         /** @phpstan-ignore-next-line  */
         $treeBuilder->getRootNode()
             ->children()
