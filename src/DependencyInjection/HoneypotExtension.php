@@ -66,13 +66,12 @@ class HoneypotExtension extends Extension
         if (
             in_array(Policy::POLICY_CLOUDFLARE_LOCK, $policies, true)
             && (
-                empty($config['cloudflare']['zone'] ?? '')
-                || empty($config['cloudflare']['email'] ?? '')
+                empty($config['cloudflare']['email'] ?? '')
                 || empty($config['cloudflare']['token'] ?? '')
             )
         ) {
             throw new \InvalidArgumentException(
-                'You need to provide cloudflareZone, cloudflareEmail, cloudflareToken configuration if you activate a cloudflare policy.'
+                'You need to provide cloudflareEmail, cloudflareToken configuration if you activate a cloudflare policy.'
             );
         }
 
