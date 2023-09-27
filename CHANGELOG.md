@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/lahaxearnaud/honeypot-bundle/compare/v1.0.0...v1.0.1) (2023-09-27)
+
+
+### Bug Fixes
+
+* trigger version ([1b988dd](https://github.com/lahaxearnaud/honeypot-bundle/commit/1b988dd4482fbfef104a650c67839f8cd954b151))
+
 # 1.0.0 (2023-09-24)
 
 
