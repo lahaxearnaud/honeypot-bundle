@@ -70,6 +70,15 @@ honeypot:
     patternsFile: 'src/Resources/patterns.txt'
 ```
 
+If you use twig render you need you register the namespace in you twig configuration:
+
+```yaml
+twig:
+    paths:
+        '%kernel.project_dir%/templates': ''
+        '%kernel.project_dir%/vendor/alahaxe/honeypot-bundle/Resources/views': 'HoneypotBundle'
+```
+
 ## Add you own counter measure
 
 ### Implements your own service
