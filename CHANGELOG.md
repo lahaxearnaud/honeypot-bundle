@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/lahaxearnaud/honeypot-bundle/compare/v1.0.2...v1.0.3) (2023-11-22)
+
+
+### Bug Fixes
+
+* cloudflare http query using json ([c2b4921](https://github.com/lahaxearnaud/honeypot-bundle/commit/c2b49217178bb8744948140834414bb8613bbf3b))
+
 ## [1.0.2](https://github.com/lahaxearnaud/honeypot-bundle/compare/v1.0.1...v1.0.2) (2023-09-27)
 
 
