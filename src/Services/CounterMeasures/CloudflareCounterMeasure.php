@@ -36,14 +36,14 @@ class CloudflareCounterMeasure implements CounterMeasureInterface
                     'X-Auth-Email' => $this->cloudflareEmail,
                     'X-Auth-Key' => $this->cloudflareToken,
                 ],
-                'body' => (string) \json_encode([
+                'json' => [
                     'mode' => $this->mode->value,
                     'configuration' => [
                         'target' => 'ip',
                         'value' => $request->getClientIp(),
                     ],
                     'notes' => 'Blocked by PHP honeypot',
-                ]),
+                ],
             ],
         );
     }
