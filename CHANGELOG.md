@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/lahaxearnaud/honeypot-bundle/compare/v1.0.3...v2.0.0) (2023-11-29)
+
+
+### Features
+
+* Support SF 7 ([ebb1ef8](https://github.com/lahaxearnaud/honeypot-bundle/commit/ebb1ef81fe029e23829518d1c4ff69f7906b451e))
+
+
+### BREAKING CHANGES
+
+* Drop php < 8.2
+
 ## [1.0.3](https://github.com/lahaxearnaud/honeypot-bundle/compare/v1.0.2...v1.0.3) (2023-11-22)
 
 
