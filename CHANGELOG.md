@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/lahaxearnaud/honeypot-bundle/compare/v2.0.0...v2.0.1) (2023-11-30)
+
+
+### Bug Fixes
+
+* allow psr log 1 and 3 ([6d1ee8f](https://github.com/lahaxearnaud/honeypot-bundle/commit/6d1ee8f643965fdf07399d6c40817a063822ba5b))
+
 # [2.0.0](https://github.com/lahaxearnaud/honeypot-bundle/compare/v1.0.3...v2.0.0) (2023-11-29)
 
 
