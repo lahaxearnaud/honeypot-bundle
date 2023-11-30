@@ -3,9 +3,9 @@
 namespace Alahaxe\HoneypotBundle\Tests\Services\CounterMeasures;
 
 use Alahaxe\HoneypotBundle\Services\CounterMeasures\LoggerCounterMeasure;
-use Psr\Log\Test\TestLogger;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Alahaxe\HoneypotBundle\Tests\Services\TestLogger;
 
 class LoggerCounterMeasureTest extends KernelTestCase
 {
