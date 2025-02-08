@@ -22,12 +22,12 @@ class DebugCounterMeasure implements CounterMeasureInterface, DataCollectorInter
         // empty
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'Honeypot';
     }
 
-    public function reset()
+    public function reset(): void
     {
         self::$lastHoneyPotDetected = null;
     }
