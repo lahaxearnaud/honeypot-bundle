@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/lahaxearnaud/honeypot-bundle/compare/v2.0.1...v2.0.2) (2025-02-08)
+
+
+### Bug Fixes
+
+* Implicitly marking parameter  as nullable is deprecated ([1024e1b](https://github.com/lahaxearnaud/honeypot-bundle/commit/1024e1bf9d82d54f09633ab634ce953c8cfb65ef))
+
 ## [2.0.1](https://github.com/lahaxearnaud/honeypot-bundle/compare/v2.0.0...v2.0.1) (2023-11-30)
 
 
