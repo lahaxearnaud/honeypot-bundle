@@ -17,7 +17,7 @@ class DebugCounterMeasure implements CounterMeasureInterface, DataCollectorInter
         self::$lastHoneyPotDetected = $honeypotPattern;
     }
 
-    public function collect(Request $request, Response $response, \Throwable $exception = null): void
+    public function collect(Request $request, Response $response, ?\Throwable $exception = null): void
     {
         // empty
     }
