@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/lahaxearnaud/honeypot-bundle/compare/v2.0.2...v2.0.3) (2025-02-08)
+
+
+### Bug Fixes
+
+* force return type ([25681a5](https://github.com/lahaxearnaud/honeypot-bundle/commit/25681a51ec11fff3cbd4762e80b758ac84d6a36d))
+
 ## [2.0.2](https://github.com/lahaxearnaud/honeypot-bundle/compare/v2.0.1...v2.0.2) (2025-02-08)
 
 
