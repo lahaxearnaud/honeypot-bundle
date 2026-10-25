@@ -1,3 +1,17 @@
+# [2.1.0](https://github.com/lahaxearnaud/honeypot-bundle/compare/v2.0.3...v2.1.0) (2026-10-25)
+
+
+### Bug Fixes
+
+* clarify configuration tree builder types ([fdec38e](https://github.com/lahaxearnaud/honeypot-bundle/commit/fdec38ecd3b211466887c5e8978847a0f90dda64))
+* type Symfony configuration root node ([a0fb3a3](https://github.com/lahaxearnaud/honeypot-bundle/commit/a0fb3a3bc2abd45d757ceee63eb3face83bbfe46))
+* update PHPStan for Symfony 8 ([974f27e](https://github.com/lahaxearnaud/honeypot-bundle/commit/974f27eb2a475be737cc5b5ae1894685b1bb5c27))
+
+
+### Features
+
+* support Symfony 8 ([b0d587c](https://github.com/lahaxearnaud/honeypot-bundle/commit/b0d587cb88f4f993c99b96a778bec26d5761949d))
+
 ## [2.0.3](https://github.com/lahaxearnaud/honeypot-bundle/compare/v2.0.2...v2.0.3) (2025-02-08)
 
 
