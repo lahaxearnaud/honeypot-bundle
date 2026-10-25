@@ -6,6 +6,7 @@ use Alahaxe\HoneypotBundle\Enums\CloudflareBlockMode;
 use Alahaxe\HoneypotBundle\Enums\Policy;
 use Alahaxe\HoneypotBundle\Services\CounterMeasures\CloudflareCounterMeasure;
 use Alahaxe\HoneypotBundle\Services\LockedResponseGenerator\SimpleResponseGenerator;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -15,8 +16,10 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('honeypot');
 
-        /** @phpstan-ignore-next-line  */
-        $treeBuilder->getRootNode()
+        /** @var ArrayNodeDefinition $rootNode */
+        $rootNode = $treeBuilder->getRootNode();
+
+        $rootNode
             ->children()
                 ->scalarNode('patternsFile')
                     ->defaultValue(__DIR__ . '/../../Resources/patterns.txt')
