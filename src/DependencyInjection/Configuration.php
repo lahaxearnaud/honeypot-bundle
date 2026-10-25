@@ -18,59 +18,46 @@ class Configuration implements ConfigurationInterface
 
         /** @var ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
+        $children = $rootNode->children();
 
-        $rootNode
-            ->children()
-                ->scalarNode('patternsFile')
-                    ->defaultValue(__DIR__ . '/../../Resources/patterns.txt')
-                ->end()
+        $children->scalarNode('patternsFile')
+            ->defaultValue(__DIR__ . '/../../Resources/patterns.txt')
+            ->end();
 
-                ->arrayNode('counterMeasures')
-                    ->scalarPrototype()->end()
-                    ->beforeNormalization()->castToArray()->end()
-                ->end()
+        $counterMeasures = $children->arrayNode('counterMeasures');
+        $counterMeasures->scalarPrototype()->end();
+        $counterMeasures->beforeNormalization()->castToArray()->end();
 
-                ->arrayNode('ipWhitelist')
-                    ->scalarPrototype()->end()
-                    ->beforeNormalization()->castToArray()->end()
-                ->end()
+        $ipWhitelist = $children->arrayNode('ipWhitelist');
+        $ipWhitelist->scalarPrototype()->end();
+        $ipWhitelist->beforeNormalization()->castToArray()->end();
 
-                ->arrayNode('policies')
-                    ->enumPrototype()->values(
-                        array_map(fn (Policy $policy): string => $policy->value, Policy::cases())
-                    )->end()
-                    ->beforeNormalization()->castToArray()->end()
-                ->end()
+        $policies = $children->arrayNode('policies');
+        $policies->enumPrototype()->values(
+            array_map(fn (Policy $policy): string => $policy->value, Policy::cases())
+        )->end();
+        $policies->beforeNormalization()->castToArray()->end();
 
-                ->arrayNode('localLock')
-                     ->children()
-                        ->integerNode('lockTtl')
-                            ->defaultValue(60)
-                        ->end()
-                        ->scalarNode('renderService')
-                            ->defaultValue(SimpleResponseGenerator::class)
-                        ->end()
-                        ->scalarNode('twigTemplate')
-                            ->defaultValue('@HoneypotBundle/lock.html.twig')
-                        ->end()
-                    ->end()
-                ->end()
+        $localLock = $children->arrayNode('localLock');
+        $localLockChildren = $localLock->children();
+        $localLockChildren->integerNode('lockTtl')->defaultValue(60)->end();
+        $localLockChildren->scalarNode('renderService')
+            ->defaultValue(SimpleResponseGenerator::class)
+            ->end();
+        $localLockChildren->scalarNode('twigTemplate')
+            ->defaultValue('@HoneypotBundle/lock.html.twig')
+            ->end();
 
-                ->arrayNode('cloudflare')
-                    ->children()
-                         ->scalarNode('email')->end()
-                         ->scalarNode('token')->end()
-                         ->scalarNode('endpoint')
-                            ->defaultValue(CloudflareCounterMeasure::FIREWALL_API_ENDPOINT)
-                         ->end()
-                         ->enumNode('mode')
-                            ->values(
-                                array_map(fn (CloudflareBlockMode $policy): string => $policy->value, CloudflareBlockMode::cases())
-                            )
-                         ->end()
-                    ->end()
-                ->end()
-        ;
+        $cloudflare = $children->arrayNode('cloudflare');
+        $cloudflareChildren = $cloudflare->children();
+        $cloudflareChildren->scalarNode('email')->end();
+        $cloudflareChildren->scalarNode('token')->end();
+        $cloudflareChildren->scalarNode('endpoint')
+            ->defaultValue(CloudflareCounterMeasure::FIREWALL_API_ENDPOINT)
+            ->end();
+        $cloudflareChildren->enumNode('mode')->values(
+            array_map(fn (CloudflareBlockMode $policy): string => $policy->value, CloudflareBlockMode::cases())
+        )->end();
 
         return $treeBuilder;
     }
