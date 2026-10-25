@@ -29,7 +29,6 @@ class HoneypotExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $config['counterMeasures'] ??= [];
         foreach ($config['counterMeasures'] as $class) {
             if (!$container->hasDefinition($class)) {
                 throw new \InvalidArgumentException(
